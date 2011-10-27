@@ -1,0 +1,27 @@
+*.py[co]
+
+*.swp
+
+#Backups
+*~
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+develop-eggs
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+
+#Virtualenv used by the project
+env/
