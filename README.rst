@@ -13,7 +13,7 @@ Here is a typical session: ::
 Implementing a new command
 **************************
 
-Commands are implemented as Plugins (se more at `plugnplay <https://github.com/daltonmatos/plugnplay>_`). Just create a new class:
+Commands are implemented as Plugins (more at plugnplay <https://github.com/daltonmatos/plugnplay>). Just create a new class:
 
     from alfredo import Plugin, ICommand
 
