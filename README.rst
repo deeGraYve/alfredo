@@ -33,5 +33,5 @@ In this case we create a new command named 'mycommand'. If we send this message 
    mycommand p1 p2 p3
 
 
-the ``run()`` method would be called like this: ``run('user@domain.com', 'some', 'text')``. This method must return a string, that will be sent back to the original user.
+the ``run()`` method would be called like this: ``run('user@domain.com', 'p1', 'p2', 'p3')``. This method must return a string, that will be sent back to the original user.
 
