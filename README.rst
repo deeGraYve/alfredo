@@ -35,3 +35,17 @@ In this case we create a new command named 'mycommand'. If we send this message 
 
 the ``run()`` method would be called like this: ``run('user@domain.com', 'p1', 'p2', 'p3')``. This method must return a string, that will be sent back to the original user.
 
+
+How to use it
+*************
+
+To start talking to alfredo just add ``alfredo@daltonmatos.com`` to your gtalk conacts list and you are done!
+
+
+--
+
+Dalton barreto
+
+daltonmatos@gmail.com
+
+
