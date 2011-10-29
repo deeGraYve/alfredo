@@ -97,16 +97,6 @@ class GtalkRobot(object):
         """ Authorise JID 'jid'. Works only if these JID requested auth previously. """
         self.getRoster().Authorize(jid)
     
-    ########################################################################################################################
-    def initCommands(self):
-        if self.commands:
-            self.commands.clear()
-        else:
-            self.commands = list()
-        for (name, value) in inspect.getmembers(self):
-            if inspect.ismethod(value) and name.startswith(self.command_prefix):
-                self.commands.append((value.__doc__, value))
-
     def _processMessage(self, conn, message):
         text = message.getBody()
         user = message.getFrom()
@@ -119,6 +109,12 @@ class GtalkRobot(object):
                 found = implementor
             if not found:
               self._replyMessage(user, 'somecommand is not a valid command. Try help to know more')
+            else:
+              try:
+                r = found.run(user, command, *args)
+                self._replyMessage(user, r)
+              except:
+                self._replyMessage(user, 'Error running command: {0}'.format(text))
 
     def presenceHandler(self, conn, presence):
         if presence:
