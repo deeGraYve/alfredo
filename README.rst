@@ -20,6 +20,12 @@ Commands are implemented as Plugins (more at plugnplay <https://github.com/dalto
     class SomeCommand(Plugin):
       implements = [ICommand]
 
+      def help(self):
+        return ('short help', 'long help')
+
+      def name(self):
+        return 'mycommand'
+
       def match_name(self, command):
         return 'mycommand' == command
 

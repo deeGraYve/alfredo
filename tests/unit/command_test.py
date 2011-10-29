@@ -5,6 +5,7 @@ import unittest
 
 from alfredo import *
 
+
 class InvertCommandTest(unittest.TestCase):
 
   def setUp(self):
@@ -52,4 +53,25 @@ class Base64DecodeTest(unittest.TestCase):
 
   def test_encode(self):
     self.assertEquals("alfredo butler", self.b64d.run('user', 'b64d', 'YWxmcmVkbyBidXRsZXI='))
+
+
+class HelpCommandTest(unittest.TestCase):
+
+  def setUp(self):
+    self.help = HelpCommand()
+
+  def test_match_name(self):
+    self.assertTrue(self.help.match_name('help'))
+
+
+  def test_list_available_commands(self):
+    result = self.help.run('user', 'help')
+    self.assertEquals(sorted(['inv - {0}'.format(InvertCommand.SHORTHELP),\
+                              'b64e/b64d - {0}'.format(Base64Command.SHORTHELP),\
+                              'help - {0}'.format(HelpCommand.SHORTHELP)]), sorted(result.split('\n'))) #We have more than 2 built-in commands
+
+  def test_help_on_specific_command(self):
+    result = self.help.run('user', 'help', 'b64e')
+    self.assertEquals(Base64Command.LONGHELP, result)
+
 
