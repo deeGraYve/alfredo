@@ -24,4 +24,9 @@ pip-log.txt
 .tox
 
 #Virtualenv used by the project
-env/
+dist/
+build/
+lib/
+man/
+include/
+alfredo.egg-info/
