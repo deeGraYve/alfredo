@@ -28,13 +28,12 @@ import urllib
 import re
 import inspect
 
+import os
+
 """A simple jabber/xmpp bot framework
 
 This is a simple jabber/xmpp bot framework using Regular Expression Pattern as command controller.
 Copyright (c) 2008 Demiao Lin <ldmiao@gmail.com>
-
-To use, subclass the "GtalkRobot" class and implement "command_NUM_" methods
-(or whatever you set the command_prefix to), like sampleRobot.py.
 
 """
 
@@ -49,22 +48,6 @@ class GtalkRobot(object):
     GO_TO_NEXT_COMMAND = 'go_to_next'
     ########################################################################################################################
     
-    #Pattern Tips:
-    # I or IGNORECASE <=> (?i)      case insensitive matching
-    # L or LOCALE <=> (?L)          make \w, \W, \b, \B dependent on the current locale
-    # M or MULTILINE <=> (?m)       matches every new line and not only start/end of the whole string
-    # S or DOTALL <=> (?s)          '.' matches ALL chars, including newline
-    # U or UNICODE <=> (?u)         Make \w, \W, \b, and \B dependent on the Unicode character properties database.
-    # X or VERBOSE <=> (?x)         Ignores whitespace outside character sets
-    
-    #This method is the default action for all pattern in lowest priviledge
-    def command_999_default(self, user, message, args):
-        """.*?(?s)(?m)"""
-        self.replyMessage(user, message)
-
-    ########################################################################################################################
-    #These following methods can be only used after bot has been successfully started
-
     #show : xa,away---away   dnd---busy   available--online
     def setState(self, show, status_text):
         if show:
@@ -124,36 +107,26 @@ class GtalkRobot(object):
         for (name, value) in inspect.getmembers(self):
             if inspect.ismethod(value) and name.startswith(self.command_prefix):
                 self.commands.append((value.__doc__, value))
-        #print self.commands
 
-    def controller(self, conn, message):
+    def _processMessage(self, conn, message):
         text = message.getBody()
         user = message.getFrom()
         if text:
             text = text.encode('utf-8', 'ignore')
-            if not self.commands:
-                self.initCommands()
-            for (pattern, bounded_method) in self.commands:
-                match_obj = re.match(pattern, text)
-                if(match_obj):
-                    try:
-                        return_value = bounded_method(user, text, match_obj.groups())
-                        if return_value == self.GO_TO_NEXT_COMMAND:
-                            pass
-                        else:
-                            break
-                    except:
-                        print_info(sys.exc_info())
-                        self.replyMessage(user, traceback.format_exc())
 
     def presenceHandler(self, conn, presence):
-        #print presence
-        #print_info(presence)
         if presence:
             if presence.getType()=='subscribe':
                 jid = presence.getFrom().getStripped()
                 sys.stderr.write("Subscribe: {0}".format(jid))
                 self.authorize(jid)
+
+    '''
+     Parses the received message. Returns a tuple (command, (*args))
+    '''
+    def _parse_message(self, message):
+      command = message.split(' ')
+      return (command[0], tuple(filter(lambda x: len(x) > 0, command[1:])) )
 
     def StepOn(self):
         try:
@@ -194,7 +167,7 @@ class GtalkRobot(object):
         if authres<>"sasl":
             print "Warning: unable to perform SASL auth os %s. Old authentication method used!"%server
         
-        self.conn.RegisterHandler("message", self.controller)
+        self.conn.RegisterHandler("message", self._processMessage)
         self.conn.RegisterHandler('presence',self.presenceHandler)
         
         self.conn.sendInitPresence()
@@ -210,5 +183,5 @@ class GtalkRobot(object):
 ############################################################################################################################
 if __name__ == "__main__":
     bot = GtalkRobot()
-    bot.setState('available', "PyGtalkRobot")
-    bot.start("PyGtalkRobot@gmail.com", "PyGtalkRobotByLdmiao")
+    bot.setState('available', "Alfredo is ready to serve!")
+    bot.start(os.environ.get('ALFREDO_USER'), os.environ.get('ALFREDO_PWD'))
