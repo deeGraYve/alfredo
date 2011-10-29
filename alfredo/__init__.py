@@ -7,6 +7,8 @@ import plugnplay
 import base64
 
 
+__all__ = ['ICommand']
+
 Plugin = plugnplay.Plugin
 
 

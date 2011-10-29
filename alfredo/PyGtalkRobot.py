@@ -30,6 +30,8 @@ import inspect
 
 import os
 
+import alfredo
+
 """A simple jabber/xmpp bot framework
 
 This is a simple jabber/xmpp bot framework using Regular Expression Pattern as command controller.
@@ -43,9 +45,6 @@ class GtalkRobot(object):
     conn = None
     show = "available"
     status = "PyGtalkRobot"
-    commands = None
-    command_prefix = 'command_'
-    GO_TO_NEXT_COMMAND = 'go_to_next'
     ########################################################################################################################
     
     #show : xa,away---away   dnd---busy   available--online
@@ -73,7 +72,7 @@ class GtalkRobot(object):
     def getState(self):
         return self.show, self.status
 
-    def replyMessage(self, user, message):
+    def _replyMessage(self, user, message):
         self.conn.send(xmpp.Message(user, message))
 
     def getRoster(self):
@@ -113,6 +112,13 @@ class GtalkRobot(object):
         user = message.getFrom()
         if text:
             text = text.encode('utf-8', 'ignore')
+            command, args = self._parse_message(text)
+            found = None
+            for implementor in alfredo.ICommand.implementors():
+              if implementor.match_name(command):
+                found = implementor
+            if not found:
+              self._replyMessage(user, 'somecommand is not a valid command. Try help to know more')
 
     def presenceHandler(self, conn, presence):
         if presence:
