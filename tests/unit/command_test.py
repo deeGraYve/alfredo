@@ -14,13 +14,13 @@ class InvertCommandTest(unittest.TestCase):
     self.assertTrue(self.inv.match_name('inv'))
 
   def test_check_parameter_presence(self):
-    self.assertEquals("inv command needs at least one argument", self.inv.run('daltonmatos@gmail.com'))
+    self.assertEquals("inv command needs at least one argument", self.inv.run('daltonmatos@gmail.com', 'inv'))
 
   def test_invert_one_argument(self):
-    self.assertEquals("oderfla", self.inv.run('user@domain.com', 'alfredo'))
+    self.assertEquals("oderfla", self.inv.run('user@domain.com', 'inv', 'alfredo'))
 
   def test_invert_two_arguments(self):
-    self.assertEquals("reltub oderfla", self.inv.run('user', 'alfredo', 'butler'))
+    self.assertEquals("reltub oderfla", self.inv.run('user', 'inv', 'alfredo', 'butler'))
 
 
 

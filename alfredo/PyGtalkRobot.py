@@ -108,7 +108,7 @@ class GtalkRobot(object):
               if implementor.match_name(command):
                 found = implementor
             if not found:
-              self._replyMessage(user, 'somecommand is not a valid command. Try help to know more')
+              self._replyMessage(user, '{0} is not a valid command. Try help to know more'.format(command))
             else:
               try:
                 r = found.run(user, command, *args)
@@ -176,7 +176,7 @@ class GtalkRobot(object):
         
         self.setState(self.show, self.status)
         
-        print "Bot started."
+        print "Bot started, logged in as {0}".format(user)
         self.GoOn()
 
 

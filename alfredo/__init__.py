@@ -7,7 +7,7 @@ import plugnplay
 import base64
 
 
-__all__ = ['ICommand']
+__all__ = ['ICommand', 'InvertCommand', 'Base64Command']
 
 Plugin = plugnplay.Plugin
 
@@ -40,7 +40,7 @@ class InvertCommand(Plugin):
   def match_name(self, command):
     return 'inv' == command
 
-  def run(self, user, *args):
+  def run(self, user, command, *args):
     if len(args) == 0:
       return "inv command needs at least one argument"
     return " ".join(s[::-1] for s in args[::-1])
