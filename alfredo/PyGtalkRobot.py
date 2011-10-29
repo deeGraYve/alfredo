@@ -179,11 +179,4 @@ class GtalkRobot(object):
         print "Bot started."
         self.GoOn()
 
-    ########################################################################################################################
 
-
-############################################################################################################################
-if __name__ == "__main__":
-    bot = GtalkRobot()
-    bot.setState('available', "Alfredo is ready to serve!")
-    bot.start(os.environ.get('ALFREDO_USER'), os.environ.get('ALFREDO_PWD'))
