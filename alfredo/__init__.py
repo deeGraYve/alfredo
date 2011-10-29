@@ -65,32 +65,5 @@ class Base64Command(Plugin):
     return base64.b64decode(data)
 
 
-class Alfredo(GtalkRobot):
-
-
-  def command_01_hello(self, user, message, args):
-    '''hello(?i)'''
-    self.replyMessage(user, "Olá! tudo bem?")
-
-  def command_03_bounce(self, user, message, args):
-    '''bounce(?i)'''
-    self.replyMessage(user, "{0} {1}".format(message, args))
-
-  def command_02_inv(self, user, message, args):
-    '''inv'''
-    msg = message.split(' ')
-    if len(msg) > 1:
-      remainder = " ".join(msg[1:])
-    else:
-      remainder = ""
-    self.replyMessage(user, remainder[::-1])
-
-
-if __name__ == "__main__":
-  bot = Alfredo()
-  bot.setState('available', 'Alfredo is ready to serve')
-  bot.start('alfredo@daltonmatos.com', sys.stdin.readline())
-
-
 
 

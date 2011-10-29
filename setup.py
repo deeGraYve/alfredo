@@ -14,7 +14,7 @@ setup(
   author_email="daltonmatos@gmail.com",
   long_description=open('README.rst').read(),
   packages=['alfredo'],
-  scripts=['scripts/alfredo'],
+  scripts=['script/alfredo'],
   install_requires = ['plugnplay', 'xmpppy'],
   classifiers = [
     "License :: OSI Approved :: BSD",
