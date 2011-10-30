@@ -177,6 +177,7 @@ class GtalkRobot(object):
         self.setState(self.show, self.status)
         
         print "Bot started, logged in as {0}".format(user)
+        print "IComand implementors found: {0}".format(alfredo.ICommand.implementors())
         self.GoOn()
 
 
