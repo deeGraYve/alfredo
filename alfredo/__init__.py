@@ -6,8 +6,7 @@ from PyGtalkRobot import GtalkRobot
 import plugnplay
 import base64
 
-
-__all__ = ['ICommand', 'InvertCommand', 'Base64Command', 'HelpCommand']
+__all__ = ['ICommand', 'InvertCommand', 'Base64Command', 'HelpCommand', 'Plugin']
 
 Plugin = plugnplay.Plugin
 
@@ -117,3 +116,6 @@ class Base64Command(Plugin):
 
 
 
+
+
+from urbandictionary import *
