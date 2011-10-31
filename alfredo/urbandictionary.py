@@ -43,7 +43,7 @@ def urban(term):
         text += unicode("".join(c.contents))
       else:
         text += unicode(c)
-
+    text = text.encode('utf-8')
     return "{0}:\n{1}\nYou can see all results at: {2}".format(term, unescape(text), URL + params)
   return "Term not found: {0}".format(term)
 
