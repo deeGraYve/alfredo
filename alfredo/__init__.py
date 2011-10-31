@@ -115,3 +115,4 @@ class Base64Command(Plugin):
 
 
 from urbandictionary import *
+from megaupload import *
