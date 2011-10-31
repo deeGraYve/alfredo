@@ -17,7 +17,7 @@ setup(
   scripts=['script/alfredo', 'script/ud'],
   install_requires = ['plugnplay', 'xmpppy', 'requests', 'beautifulsoup'],
   classifiers = [
-    "License :: OSI Approved :: BSD",
+    "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Topic :: Software Development :: Libraries :: Application Frameworks"
