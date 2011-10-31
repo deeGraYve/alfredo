@@ -1,7 +1,6 @@
 
 
 import alfredo
-import sys
 
 import requests
 from BeautifulSoup import BeautifulSoup, Tag
@@ -26,7 +25,7 @@ class MegaUploadCommand(alfredo.Plugin):
 
 
 def mu(link):
-  r = requests.get(sys.argv[1]).content
+  r = requests.get(link).content
   html = BeautifulSoup(r)
   href = html.findAll('a', attrs = {'class': 'down_butt1'})
   if len(href) > 0:
