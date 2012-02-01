@@ -113,8 +113,9 @@ class GtalkRobot(object):
               try:
                 r = found.run(user, command, *args)
                 self._replyMessage(user, r)
-              except:
-                self._replyMessage(user, 'Error running command: {0}'.format(text))
+              except Exception, e:
+                self._replyMessage(user, 'Error running command: {0}.'.format(text))
+                print e
 
     def presenceHandler(self, conn, presence):
         if presence:
