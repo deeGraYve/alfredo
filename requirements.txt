@@ -1,0 +1,6 @@
+alfredo
+BeautifulSoup>=3.2.0
+plugnplay>=0.2
+requests>=0.4.1
+simplejson>=2.1.6
+xmpppy>=0.5.0rc1

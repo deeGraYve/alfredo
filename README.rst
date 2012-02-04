@@ -2,7 +2,7 @@ Alfredo - Born to serve!
 ************************
 
 
-Alfredo is a simple, extensible gtalk bot. It's cabaple of doing any kind of tasks, implemented as separated commands.
+Alfredo is a simple, extensible gtalk bot. It's capable of doing any kind of tasks, implemented as separated commands.
 
 Here is a typical session: ::
 
@@ -45,8 +45,28 @@ the ``run()`` method would be called like this: ``run('user@domain.com', 'p1', '
 How to use it
 *************
 
-To start talking to alfredo just add ``alfredo@daltonmatos.com`` to your gtalk conacts list and you are done!
+To start talking to a running instance of alfredo just add ``alfredo@daltonmatos.com`` to your gtalk conacts list and you are done!
 
+Or try out your own commands from the example code.
+
+
+Dependencies
+************
+
+Alfredo's core components only needs:
+
+* plugnplay - https://github.com/daltonmatos/plugnplay
+* xmpppy - http://xmpppy.sourceforge.net/
+
+The included commands needs:
+
+* BeautifulSoup - http://www.crummy.com/software/BeautifulSoup/
+* requests - https://github.com/kennethreitz/requests
+* simplejson - http://code.google.com/p/simplejson/
+
+You can even run the requirements file to get up your environment::
+
+    pip install -r requirements.txt
 
 --
 

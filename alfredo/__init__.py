@@ -4,7 +4,6 @@ import sys
 from PyGtalkRobot import GtalkRobot
 
 import plugnplay
-import base64
 
 __all__ = ['ICommand', 'InvertCommand', 'Base64Command', 'HelpCommand', 'Plugin']
 

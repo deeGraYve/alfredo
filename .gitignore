@@ -1,5 +1,7 @@
 *.py[co]
 
+bot_config.py
+
 *.swp
 
 #Backups
