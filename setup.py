@@ -2,9 +2,10 @@
 # encoding: utf-8
 from setuptools import setup
 import os
-import sys
 
-with open('README.rst') as f:
+DIRNAME = os.path.dirname(os.path.abspath(__file__))
+
+with open(os.path.join(DIRNAME, 'README.rst')) as f:
     long_description = f.read()
 
 setup(
@@ -17,7 +18,7 @@ setup(
   author_email="daltonmatos@gmail.com",
   long_description=long_description,
   packages=['alfredo'],
-  scripts=['script/alfredo', 'script/ud'],
+  scripts=[os.path.join(DIRNAME, 'script/alfredo'), os.path.join(DIRNAME, 'script/ud')],
   install_requires = ['plugnplay', 'xmpppy', 'requests', 'beautifulsoup', 'simplejson'],
   classifiers = [
     "License :: OSI Approved :: BSD License",
