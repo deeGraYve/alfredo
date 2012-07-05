@@ -3,8 +3,13 @@
 
 
 import os
+import plugnplay
+
 from alfredo.PyGtalkRobot import GtalkRobot
 
+
+plugnplay.set_plugin_dirs(os.path.abspath(os.path.join(os.path.dirname(__file__), "../commands")))
+plugnplay.load_plugins()
 
 bot = GtalkRobot()
 bot.setState('available', 'Alfredo is ready to serve')
