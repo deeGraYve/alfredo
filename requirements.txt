@@ -1,4 +1,3 @@
-alfredo
 BeautifulSoup>=3.2.0
 plugnplay>=0.2
 requests>=0.4.1
