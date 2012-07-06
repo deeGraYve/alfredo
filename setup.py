@@ -15,7 +15,7 @@ setup(
   author="Dalton Barreto",
   author_email="daltonmatos@gmail.com",
   long_description=open(os.path.join(BASE_PATH, 'README.rst')).read(),
-  packages=['alfredo'],
+  packages=['alfredo', 'alfredo/commands'],
   scripts=[os.path.join(BASE_PATH, 'script/alfredo'), os.path.join(BASE_PATH, 'script/ud')],
   install_requires=['BeautifulSoup==3.2.1', 'plugnplay==0.5.0', 'requests==0.13.2', 'simplejson==2.6.0', 'xmpppy==0.5.0rc1', ],
   classifiers=[
