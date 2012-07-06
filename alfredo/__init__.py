@@ -5,7 +5,7 @@ from PyGtalkRobot import GtalkRobot
 
 import plugnplay
 
-__all__ = ['ICommand', 'InvertCommand', 'Base64Command', 'HelpCommand', 'Plugin']
+__all__ = ['ICommand',  'Plugin']
 
 Plugin = plugnplay.Plugin
 
@@ -42,6 +42,3 @@ class ICommand(plugnplay.Interface):
   '''
   def run(self, user, command, *args):
     pass
-
-    
-from os.path import realpath
