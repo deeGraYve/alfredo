@@ -1,5 +1,6 @@
 #encoding: utf-8
 
+import os
 import sys
 from PyGtalkRobot import GtalkRobot
 
@@ -42,3 +43,7 @@ class ICommand(plugnplay.Interface):
   '''
   def run(self, user, command, *args):
     pass
+
+commands_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'commands'))
+plugnplay.set_plugin_dirs(commands_dir)
+plugnplay.load_plugins()
