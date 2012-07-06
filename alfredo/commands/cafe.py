@@ -10,7 +10,7 @@ class CafezinhoCommand(alfredo.Plugin):
 
   implements = [alfredo.ICommand,]
   SHORTHELP = 'Pede pra alguem fazer um cafezinho no escritório'
-  
+
   def help(self):
     return (self.SHORTHELP, self.SHORTHELP)
 
