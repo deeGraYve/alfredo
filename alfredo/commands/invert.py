@@ -1,5 +1,6 @@
 import alfredo
 
+
 class InvertCommand(alfredo.Plugin):
   implements = [alfredo.ICommand]
   SHORTHELP = 'Inverts all passed arguments'
@@ -16,4 +17,4 @@ class InvertCommand(alfredo.Plugin):
   def run(self, user, command, *args):
     if len(args) == 0:
       return "inv command needs at least one argument"
-    return " ".join(s[::-1] for s in args[::-1])
+    return {"message": " ".join(s[::-1] for s in args[::-1])}

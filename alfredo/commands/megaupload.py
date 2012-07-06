@@ -19,7 +19,7 @@ class MegaUploadCommand(alfredo.Plugin):
   def run(self, user, command, *args):
     if len(args) < 1:
       return 'Needs a least one argument'
-    return mu(args[0])
+    return {"message": mu(args[0])}
 
 
 def mu(link):

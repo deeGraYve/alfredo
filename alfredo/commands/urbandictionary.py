@@ -1,14 +1,14 @@
-
-
+import htmllib
+import requests
+import urllib
 
 import alfredo
 
-import requests
 from BeautifulSoup import BeautifulSoup, Tag
-import urllib
 
 
 URL = "http://www.urbandictionary.com/define.php?"
+
 
 class UdCommand(alfredo.Plugin):
 
@@ -26,9 +26,7 @@ class UdCommand(alfredo.Plugin):
   def run(self, user, command, *args):
     if len(args) < 1:
       return 'Needs a least one argument'
-    return urban(" ".join(list(args)))
-
-
+    return {"message": urban(" ".join(list(args)))}
 
 def urban(term):
 
@@ -46,9 +44,6 @@ def urban(term):
     text = text.encode('utf-8')
     return "{0}:\n{1}\nYou can see all results at: {2}".format(term, unescape(text), URL + params)
   return "Term not found: {0}".format(term)
-
-
-import htmllib
 
 def unescape(s):
     p = htmllib.HTMLParser(None)

@@ -1,6 +1,7 @@
 import base64
 import alfredo
 
+
 class Base64Command(alfredo.Plugin):
 
   implements = [alfredo.ICommand,]
@@ -19,8 +20,7 @@ class Base64Command(alfredo.Plugin):
   def run(self, user, command, *data):
     if len(data) == 0:
       return "{0} command needs one argument".format(command)
-    return getattr(self, "_{0}".format(command))(data[0])
-
+    return {"message": getattr(self, "_{0}".format(command))(data[0])}
 
   def _b64e(self, data):
     return base64.b64encode(data)

@@ -1,5 +1,6 @@
 import alfredo
 
+
 class HelpCommand(alfredo.Plugin):
 
   implements = [alfredo.ICommand]
@@ -19,5 +20,5 @@ class HelpCommand(alfredo.Plugin):
       for implementor in alfredo.ICommand.implementors():
         if implementor.match_name(args[0]):
           return implementor.help()[1]
-    return "\n".join(["{0} - {1}".format(c.name(), c.help()[0]) for c in alfredo.ICommand.implementors()])
+    return {"message": "\n".join(["{0} - {1}".format(c.name(), c.help()[0]) for c in alfredo.ICommand.implementors()])}
 

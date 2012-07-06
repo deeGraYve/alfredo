@@ -72,8 +72,11 @@ class GtalkRobot(object):
     def getState(self):
         return self.show, self.status
 
-    def _replyMessage(self, user, message):
-        self.conn.send(xmpp.Message(user, message))
+    def _replyMessage(self, user, response):
+        self.conn.send(xmpp.Message(user, response["message"]))
+
+        if response.get("otherUser"):
+            self.conn.send(xmpp.Message(response["otherUser"], response["otherMessage"]))
 
     def getRoster(self):
         return self.conn.getRoster()
@@ -111,10 +114,10 @@ class GtalkRobot(object):
               self._replyMessage(user, '{0} is not a valid command. Try help to know more'.format(command))
             else:
               try:
-                r = found.run(user, command, *args)
-                self._replyMessage(user, r)
+                response = found.run(user, command, *args)
+                self._replyMessage(user, response)
               except Exception, e:
-                self._replyMessage(user, 'Error running command: {0}.'.format(text))
+                self._replyMessage(user, {"message": 'Error running command: {0}.'.format(text)})
                 print e
 
     def presenceHandler(self, conn, presence):

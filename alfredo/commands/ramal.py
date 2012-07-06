@@ -1,6 +1,7 @@
 #coding: utf-8
 import alfredo
 
+
 class RamalEsys(alfredo.Plugin):
 
   implements = [alfredo.ICommand]
@@ -20,7 +21,7 @@ class RamalEsys(alfredo.Plugin):
     else:
       nome = None
     
-    return ramal(nome)
+    return {"message": ramal(nome)}
 
 
 
